@@ -1,0 +1,43 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Build') {
+
+            steps {
+
+                echo 'You have Started build process ayush patel'
+
+                sh 'chmod +x build.sh'
+
+                sh './build.sh'
+
+            }
+
+        }
+
+        stage('Test') {
+
+            steps {
+
+                echo 'You have passed test process ayush patel'
+
+            }
+
+        }
+
+        stage('Archive') {
+
+            steps {
+
+                archiveArtifacts artifacts: 'build/*', fingerprint: true
+
+            }
+
+        }
+
+    }
+
+}
